@@ -154,13 +154,13 @@ public:
         if ((ret = mbedtls_ctr_drbg_seed(&_ctr_drbg, mbedtls_entropy_func, &_entropy,
                           (const unsigned char *) DRBG_PERS,
                           sizeof (DRBG_PERS))) != 0) {
-            print_mbedtls_error("mbedtls_crt_drbg_init", ret);
+            print_mbedtls_error("mbedtls_ctr_drbg_seed", ret);
             return;
         }
 
-        if ((ret = mbedtls_x509_crt_parse(&_cacert, (const unsigned char *) SSL_CA_PEM,
+        if ((ret = mbedtls_x509_ctr_parse(&_cacert, (const unsigned char *) SSL_CA_PEM,
                            sizeof (SSL_CA_PEM))) != 0) {
-            print_mbedtls_error("mbedtls_x509_crt_parse", ret);
+            print_mbedtls_error("mbedtls_x509_ctr_parse", ret);
             return;
         }
 
