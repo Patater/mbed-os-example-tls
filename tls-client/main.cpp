@@ -221,7 +221,7 @@ public:
 
         /* Fill the request buffer */
         _bpos = snprintf(_buffer, sizeof(_buffer) - 1,
-                         "GET %s HTTP/1.1\nHost: %s\n\n", path, HTTPS_SERVER_NAME);
+                         "GET %s HTTP/1.1\nHost: %s\n\n", path, _domain);
 
         int offset = 0;
         do {
@@ -239,7 +239,7 @@ public:
         }
 
         /* It also means the handshake is done, time to print info */
-        printf("TLS connection to %s established\n", HTTPS_SERVER_NAME);
+        printf("TLS connection to %s established\n", _domain);
 
         const uint32_t buf_size = 1024;
         char *buf = new char[buf_size];
